@@ -30,6 +30,19 @@ Using the CCIP Local Forked Simulator: The TransferUsdc.t.sol test file in /test
 12) Switch back to the source chain, because that's where the transferUsdc is deployed and where we will send our message
 13) Prank as the wallet address that has USDC on Avalanche (like we did earlier), and call the transferUsdc function on our transferUsdc contract
 
+Note: To run this project you will need to clone it with the git submodules using the --recursive flag. This will automatically download the dependencies in to the lib folder for you.
+```
+git clone https://github.com/atomicframeworks/ccip-bootcamp-day-3-homework.git --recursive
+```
+
+```
+cd cd ccip-bootcamp-day-3-homework/
+```
+
+```
+forge test
+```
+
 
 ## Task Completed via #2 Onchain Methods
 In the url [https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit](https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit) it mentions a way to testing onchain-- "Testnet: You can precisely determine the required gas limit by deploying your CCIP Sender and Receiver on a testnet and transmitting several CCIP messages with the previously estimated gas. Although this approach is more time-intensive, especially if testing across multiple blockchains, it offers enhanced accuracy."
