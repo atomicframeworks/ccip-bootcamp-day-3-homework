@@ -21,15 +21,13 @@ contract TransferUsdcTest is Test {
     IRouterClient public destinationRouter;
     uint64 public destinationChainSelector;
     uint64 public sourceChainSelector;
-    BurnMintERC677Helper public sourceCCIPBnMToken;
-    BurnMintERC677Helper public destinationCCIPBnMToken;
     IERC20 public sourceLinkToken;
 
     function setUp() public {
         string memory DESTINATION_RPC_URL = vm.envString(
             "ETHEREUM_SEPOLIA_RPC_URL"
         );
-        string memory SOURCE_RPC_URL = vm.envString("AVALANCE_FUJI_RPC_URL");
+        string memory SOURCE_RPC_URL = vm.envString("AVALANCHE_FUJI_RPC_URL");
         destinationFork = vm.createSelectFork(DESTINATION_RPC_URL);
         sourceFork = vm.createFork(SOURCE_RPC_URL);
 
@@ -39,10 +37,6 @@ contract TransferUsdcTest is Test {
         Register.NetworkDetails
             memory destinationNetworkDetails = ccipLocalSimulatorFork
                 .getNetworkDetails(block.chainid);
-
-        destinationCCIPBnMToken = BurnMintERC677Helper(
-            destinationNetworkDetails.ccipBnMAddress
-        );
 
         // Destination router & chainSelector
         destinationRouter = IRouterClient(
@@ -55,9 +49,7 @@ contract TransferUsdcTest is Test {
         Register.NetworkDetails
             memory sourceNetworkDetails = ccipLocalSimulatorFork
                 .getNetworkDetails(block.chainid);
-        sourceCCIPBnMToken = BurnMintERC677Helper(
-            sourceNetworkDetails.ccipBnMAddress
-        );
+
         sourceLinkToken = IERC20(sourceNetworkDetails.linkAddress);
 
         // Source router & chainSelector
@@ -86,8 +78,10 @@ contract TransferUsdcTest is Test {
 
         // Amount of tokens to send
         uint256 amountToSend = 1000000;
-        // Gas limit to provide
+        // Gas limit to provide (original / hardcoded )
         uint64 gasLimit = 500000;
+        // New gas limit (after the calcu and 10% add)
+        gasLimit = 241811;
 
         // Allow the destination chain on transferUsdc
         vm.prank(usdcWalletTestAddress);
