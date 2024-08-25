@@ -45,9 +45,11 @@ forge test
 
 
 ## Task Completed via #2 Onchain Methods
-In the url [https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit](https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit) it mentions a way to testing onchain-- "Testnet: You can precisely determine the required gas limit by deploying your CCIP Sender and Receiver on a testnet and transmitting several CCIP messages with the previously estimated gas. Although this approach is more time-intensive, especially if testing across multiple blockchains, it offers enhanced accuracy."
+In the url [https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit](https://docs.chain.link/ccip/tutorials/ccipreceive-gaslimit) it mentions a way to testing onchain
 
-The following steps and transcations show the testing onchai using testnets & then Tenderly to view the results.
+"Testnet: You can precisely determine the required gas limit by deploying your CCIP Sender and Receiver on a testnet and transmitting several CCIP messages with the previously estimated gas. Although this approach is more time-intensive, especially if testing across multiple blockchains, it offers enhanced accuracy."
+
+The following steps and transcations show the testing onchain using testnets & then Tenderly to view the results.
 
 ### 1) Deploy TransferUSDC.sol to Avalanche Fuji
 
